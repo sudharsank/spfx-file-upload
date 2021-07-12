@@ -1,0 +1,149 @@
+@import '~office-ui-fabric-react/dist/sass/References.scss';
+
+.sampleFileUpload {
+    .container {
+        margin: 10px;
+    }
+    /* File Drop Zone */
+    .dropZoneContainer {
+        display: flex;
+        flex-direction: column;
+        font-family: sans-serif;    
+        .dropzone {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border-width: 2px;
+            border-radius: 3px;
+            border-color: "[theme:themePrimary]";
+            border-style: dashed;
+            background-color: "[theme:themeTertiary]";
+            color: "[theme:themeWhite]";
+            outline: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: border .24s ease-in-out;
+            &:hover, &::after {
+                border-width: 2px;
+                border-style: dashed;
+                border-color: "[theme:white]";
+                background-color: "#c9ccab";
+                transition: border .24s ease-in-out;
+            }
+            p {
+                margin: 5px;
+                color: "[theme:white]";
+                cursor: pointer;
+            }
+        }
+        .dropZonedisabled {
+            border-color: #CCC !important;
+            background-color: lightgrey !important;
+            cursor: not-allowed;
+        }
+        .thumbsContainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            .thumb {
+                display: inline-flex;
+                border-radius: 2;
+                border: 1px solid #eaeaea;
+                margin-bottom: 8px;
+                margin-right: 8px;
+                width: 100px;
+                height: 100px;
+                padding: 4px;
+                box-sizing: border-box;
+                .thumbInner {
+                    display: flex;
+                    min-width: 0;
+                    overflow: hidden;
+                    img {
+                        display: block;
+                        width: auto;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+        .dropZoneInfo {
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 3px;
+            font-style: italic;
+            text-align: center;
+            color: gray;
+        }
+        .fileswitherror {
+            h4 {
+                margin: 10px 0px;
+            }
+            ul {
+                padding-left: 17px;
+                margin: 10px 0px;
+                list-style-type: disc;
+                li {
+                    font-weight: bold;
+                    ul {
+                        padding-left: 17px;
+                        margin: 5px 0px;
+                        font-weight: normal;
+                        list-style-type: circle;
+                    }
+                }
+            }
+        }
+    }
+    /* File Drop Zone */
+    /** Message */
+    .MessageContainer {
+        text-align: center;
+        font-style: italic;
+        line-height: 1.5em;
+        width: 100%;
+        margin-top: 10px;
+        .msgText {
+        font-size: 16px;
+            color: black !important;
+        font-weight: bold !important;
+        }
+        i {
+            font-weight: bold !important;
+            color: black !important;
+        }
+        .errorMessage{
+        color: #E84142 !important;
+        padding-top: 10px !important;
+        text-align: center;
+        }
+        .successMessage{
+        color: #64BE1A !important;
+        padding-top: 10px !important;
+        text-align: center;
+        }
+        .warningMessage{
+        color: #BEBB1A !important;
+        padding-top: 10px !important;
+        text-align: center;
+        }
+        .infoMessage{
+        background-color: rgb(148, 210, 230) !important;
+        }
+        span {
+        font-size: 14px !important;
+        font-weight: 500;
+        font-family: 'Calibri' !important;
+        }
+        div[class^="ms-MessageBar-icon"] {
+        margin: 10px 0px 10px 10px !important;
+        }
+        div[class^="ms-MessageBar-text"] {
+        margin: 10px 10px 10px 6px !important;
+        }
+    }
+    /** Message */
+}  

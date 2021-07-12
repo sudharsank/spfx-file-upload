@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sample-file-upload-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/sampleFileUpload/SampleFileUploadWebPart.js",
+          "manifest": "./src/webparts/sampleFileUpload/SampleFileUploadWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SampleFileUploadWebPartStrings": "lib/webparts/sampleFileUpload/loc/{locale}.js"
+  }
+}

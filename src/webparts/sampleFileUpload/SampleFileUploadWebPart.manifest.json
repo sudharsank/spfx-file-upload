@@ -1,0 +1,31 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+    "id": "92954a43-8bf7-4d9d-95ce-00a9e9bbc3d3",
+    "alias": "SampleFileUploadWebPart",
+    "componentType": "WebPart",
+    "version": "*",
+    "manifestVersion": 2,
+    "requiresCustomScript": false,
+    "supportedHosts": [
+        "SharePointWebPart"
+    ],
+    "supportsThemeVariants": true,
+    "preconfiguredEntries": [
+        {
+            "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+            "group": {
+                "default": "Other"
+            },
+            "title": {
+                "default": "SampleFileUpload"
+            },
+            "description": {
+                "default": "Upload files to document library using React dropzone."
+            },
+            "officeFabricIconFontName": "BulkUpload",
+            "properties": {
+                "description": "SampleFileUpload"
+            }
+        }
+    ]
+}
