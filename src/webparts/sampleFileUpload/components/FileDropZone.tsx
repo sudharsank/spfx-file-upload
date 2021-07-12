@@ -11,10 +11,6 @@ import MessageContainer, { MessageScope } from './Message';
 export interface IFileDropZoneProps {
     tempUpload: (filename: string, fileContent: any) => Promise<boolean>;
     dropCallback: (selectedFiles) => void;
-    checkForValidAction?: () => Promise<boolean>;
-    triggerInvalidActionsDisable?: () => void;
-    checkForOnHoldStatus?: () => Promise<any>;
-    triggerOnHoldActionDisable?: (onholditem: any) => void;
     documentToUpload: any[];
     clearMessage?: boolean;
     disableUpload: boolean;
@@ -121,11 +117,7 @@ const FileDropZone: FC<IFileDropZoneProps> = (props) => {
 
     const _onDropDocuments = async (selFiles) => {
         setDisableUpload(true);
-        if (props.checkForValidAction) {
-            if (await props.checkForValidAction()) {
-                _handleFileChange(selFiles);
-            } else props.triggerInvalidActionsDisable();
-        } else _handleFileChange(selFiles);
+        _handleFileChange(selFiles);
     };
 
     const { getRootProps, getInputProps, fileRejections, acceptedFiles } = useDropzone({

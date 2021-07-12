@@ -23,12 +23,10 @@ const SampleFileUpload: FC<ISampleFileUploadProps> = (props) => {
     /** Show the upload progress */
     const _showUploadProgress = () => {
         setUploadingFiles(true);
-        //setDisableActionButtons(true);
     };
     /** Hide the upload progress */
     const _hideUploadProgress = () => {
         setUploadingFiles(false);
-        //setDisableActionButtons(false);
     };
     /** Callback method after selecting the files */
     const _afterSelectingFiles = (selFiles) => {
