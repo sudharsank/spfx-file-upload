@@ -19,13 +19,15 @@ export interface IFileDropZoneProps {
     useAsyncUpload: boolean;
 }
 
-
 const FileDropZone: FC<IFileDropZoneProps> = (props) => {
     /** State Variables */
     const [disableUpload, setDisableUpload] = useState<boolean>(false);
     const [docsToUpload, setDocsToUpload] = useState<IFileUploadInfo[]>([]);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
+    /** Method triggered to read the contents of the file and 
+     * return it along with the other file properties 
+    */
     const _handleFileUpload = async (file, tempDocsToUpload) => {
         return new Promise((res, rej) => {
             const fileReader = new FileReader();
@@ -47,7 +49,7 @@ const FileDropZone: FC<IFileDropZoneProps> = (props) => {
             fileReader.readAsArrayBuffer(file);
         });
     };
-
+    /** Method triggered when the file is selected or dropped in the dropZone */
     const _handleFileChange = async (files) => {
         setErrorMessage('');
         let tempDocsToUpload: IFileUploadInfo[] = docsToUpload;
@@ -88,7 +90,7 @@ const FileDropZone: FC<IFileDropZoneProps> = (props) => {
         }
         setDisableUpload(false);
     };
-
+    /** Method triggered to validate the file */
     const _fileValidation = (file: File): FileError | FileError[] => {
         if (file.size > fle_maxFileLength) {
             return {
@@ -98,7 +100,10 @@ const FileDropZone: FC<IFileDropZoneProps> = (props) => {
         }
         return null;
     };
-
+    /** Method triggered to store custom properties apart from the default file properties
+     * In our case we are having different filenames, we can use this method to return
+     * Trimmeed Filename and Cleaned Filename
+     */
     const _customFileProperties = async (e): Promise<(File | DataTransferItem)[]> => {
         const files = [];
         const fileList = e.dataTransfer ? e.dataTransfer.files : e.target.files;
@@ -114,12 +119,12 @@ const FileDropZone: FC<IFileDropZoneProps> = (props) => {
         }
         return files;
     };
-
+    /** Method triggered when the file is dropped or selected */
     const _onDropDocuments = async (selFiles) => {
         setDisableUpload(true);
         _handleFileChange(selFiles);
     };
-
+    /** Initialize the dropZone component with the configured properties */
     const { getRootProps, getInputProps, fileRejections, acceptedFiles } = useDropzone({
         //accept: 'image/jpeg, image/jpg, image/png',
         maxFiles: fle_maxfilesallowed,
@@ -133,7 +138,7 @@ const FileDropZone: FC<IFileDropZoneProps> = (props) => {
         validator: _fileValidation,
         getFilesFromEvent: e => _customFileProperties(e)
     });
-
+    /** Method to display validation failed file info */
     const fileRejectionItems = fileRejections.map(({ file, errors }) => (
         <li key={file.name}>
             {file.name} - {file.size > 1048576 ? Math.round(file.size / 1024 / 1024) + ' MB' : Math.round(file.size / 1024) + ' KB'}

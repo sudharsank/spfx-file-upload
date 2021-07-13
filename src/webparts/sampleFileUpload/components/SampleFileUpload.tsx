@@ -34,7 +34,10 @@ const SampleFileUpload: FC<ISampleFileUploadProps> = (props) => {
         setClearFileErrorMsg(false);
         _hideUploadProgress();
     };
-    /** Uploading the case files */
+    /** Uploading the case files
+     * Method passed to the FileDropZone component and it is triggered when the file is selected.
+     * This method will upload the files asynchronously once the file is selected
+     */
     const _uploadFiles = async (filename: string, filecontent: any): Promise<boolean> => {
         let retStatus: boolean = false;
         try {
@@ -57,7 +60,9 @@ const SampleFileUpload: FC<ISampleFileUploadProps> = (props) => {
         }
         return retStatus;
     };
-    /** Upload on button click */
+    /** Upload on button click
+     * This method will upload the files selected.
+     */
     const _uploadOnSave = async () => {
         setUploadingFiles(true);
         for (let doc of docsToUpload) {
